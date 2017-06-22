@@ -17,15 +17,6 @@ newrelic-php:
     - require:
         - pkg: newrelic-php
 
-newrelic-files-folder:
-  file.directory:
-  {% if grains['os_family'] == 'RedHat' %}
-    - name: /etc/php.d
-  {% elif grains['os_family'] == 'Debian' %}
-    - name: /etc/php5/mods-available
-  {% endif %}
-    - makedirs: True
-
 newrelic-appname:
   file.replace:
   {% if grains['os_family'] == 'RedHat' %}
